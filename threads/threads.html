@@ -2,8 +2,8 @@
     <p>Threads</p>
 
     <form name="newThreadForm">
-        <input type="text" ng-model="newThreadsTitle" placeholder="New thread title..." required/>
-        <button ng-disabled="newThreadForm.$invalid" ng-click="createThreads(username, newThreadsTitle)">Add Thread</button>
+        <input type="text" ng-model="title" placeholder="New thread title..." required/>
+        <button ng-disabled="newThreadForm.$invalid" ng-click="createThreads(username, title)">Add Thread</button>
     </form>
 
     <ul>

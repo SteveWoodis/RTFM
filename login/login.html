@@ -1,6 +1,15 @@
-<p>This is the login view.</p>
+<p>This is the login and Register Page</p>
 
 <div>
-    <input type="text" ng-model="username"/>
-    <button ng-click="logMeIn(username)">Log In</button>
+    <input type="text" ng-model="reg_username" placeholder="username"/>
+    <input type="text" ng-model="reg_password" placeholder="password"/>
+    <input type="text" ng-model="reg_email" placeholder="email"/>
+    <button ng-click="registerMe(reg_email, reg_password, reg_username)">Register</button>
+</div>
+
+<div>
+    <input type="text" ng-model="log_username" placeholder="username"/>
+    <input type="text" ng-model="log_password" placeholder="password"/>
+    <input type+"text" ng-model="log_email" placeholder="email"/>
+    <button ng-click="logMeIn(log_username, log_password, log_email)">Log In</button>
 </div>

@@ -1,6 +1,6 @@
 var app = angular.module('rtfmApp');
 app.factory('threadService', function(envService, $firebase){
-	var firebaseUrl = envService.getEnv().firebase;
+	var firebaseUrl = "https://stevetest1.firebaseio.com";
 
 	return {
 
