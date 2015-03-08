@@ -1,4 +1,4 @@
-var app = angular.module('rtfmApp');
+var app = angular.module('drawWorksApp');
 app.controller('threadsCtrl', function($scope, threadsRef, envService){
 	$scope.threads = threadsRef.$asArray();
 	

@@ -1,12 +1,15 @@
-angular.module('rtfmApp').service('envService', function envService($location, $timeout) {
+angular.module('drawWorksApp').service('envService', function envService($location, $timeout) {
    
     var gUserName = '';
-    this.createUser = function(email, password, username){
-    var ref = new Firebase("https://stevetest1.firebaseio.com");
+    this.createUser = function(newUserData){
+        gUserName = newUserData.reg_email;
+        console.log(newUserData.reg_email);
+        
+    var ref = new Firebase("https://drawworks.firebaseio.com");
         ref.createUser({
-            email    : email,
-            password : password,
-            username: username
+            email    : newUserData.reg_email,
+            password : newUserData.reg_password,
+            username: newUserData.reg_username
         }, function(error, userData) {
         if (error) {
             console.log("Error creating user:", error);
@@ -15,12 +18,11 @@ angular.module('rtfmApp').service('envService', function envService($location, $
             });
         
         } else {
-            ref.child('user').child(userData.uid).set(userData);
-            ref.child('user').child(userData.uid).child('username').set(username);
+            ref.child('user').child(userData.uid).set(newUserData);
         console.log("Successfully created user account with uid:", userData.uid);
-            gUserName = username;  
+            console.log(newUserData.reg_email);
             $timeout(function(){
-                $location.path('/threads'); 
+                $location.path('/aboutMe'); 
             })
         }
     });
@@ -31,7 +33,7 @@ angular.module('rtfmApp').service('envService', function envService($location, $
     }
 
     this.getUserName = function(email, password, username){
-    var ref = new Firebase("https://stevetest1.firebaseio.com");
+    var ref = new Firebase("https://drawworks.firebaseio.com");
 	 	ref.authWithPassword({
             email:email,
             password:password,

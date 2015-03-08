@@ -1,6 +1,6 @@
-var app = angular.module('rtfmApp');
+var app = angular.module('drawWorksApp');
 app.factory('threadService', function(envService, $firebase){
-	var firebaseUrl = "https://stevetest1.firebaseio.com";
+	var firebaseUrl = "https://drawworks.firebaseio.com";
 
 	return {
 

@@ -1,4 +1,4 @@
-var app = angular.module('rtfmApp');
+var app = angular.module('drawWorksApp');
 app.controller('loginController',function($scope, envService, $location){
 	
     $scope.logMeIn = function(){
@@ -10,8 +10,10 @@ app.controller('loginController',function($scope, envService, $location){
 		
 	}
     $scope.registerMe = function(){
-     envService.createUser($scope.reg_email, $scope.reg_password, $scope.reg_username);
-       
+     //envService.createUser($scope.reg_email, $scope.reg_password, $scope.reg_username);
+        console.log('I am in registerMe');
+      $location.path('/registration'); 
+        
     }
      
     

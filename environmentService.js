@@ -1,4 +1,4 @@
-angular.module('rtfmApp')
+angular.module('drawWorksApp')
   .service('EnvironmentService', function EnvironmentService($window) {
     return {
       getEnv: function () {

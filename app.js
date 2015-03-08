@@ -1,9 +1,17 @@
-var app = angular.module('rtfmApp', ['firebase', 'ngRoute']);
+var app = angular.module('drawWorksApp', ['firebase', 'ngRoute']);
 app.config(function($routeProvider){
     $routeProvider
     .when('/login', {
         templateUrl: '/login/login.html',
         controller: 'loginController'
+    })
+    .when('/registration', {
+        templateUrl: '/login/contractorRegistration.html',
+        controller: 'conRegController'
+    })
+    .when('/aboutMe', {
+        templateUrl: 'Aboutme.html',
+        controller: 'aboutMeCtrl'
     })
     .when('/threads', {
      templateUrl: '/threads/threads.html',
