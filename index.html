@@ -6,6 +6,11 @@
 </head>
 <body ng-controller="mainController">
  
+          <div class="heading"><a href="/landing"> Home </a></div>
+          <div class="heading"><a href="/#/login"> Log in</a></div>
+          <div class="heading"><a href="/#/aboutMe"> About Me</a></div>
+          <div class="heading"><a href="/#/projects"> Projects </a></div>
+    
 <!-- Add your site or application content here -->
     <div class="container" ng-view></div>
 
@@ -16,7 +21,7 @@
 <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
 
 <!-- AngularFire -->
-<script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
 <script src="app.js"></script>
 <script type="text/javascript" src="mainController.js"></script>
@@ -27,5 +32,6 @@
 <script type="text/javascript" src="threads/threadService.js"></script>
 <script type="text/javascript" src="threads/threadCtrl.js"></script>
 <script src="login/conRegController.js"></script>
+<script src="aboutmeCtrl.js" ></script>
 </body>
 </html>

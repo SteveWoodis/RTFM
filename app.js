@@ -42,8 +42,8 @@ app.config(function($routeProvider){
 //    app.run(function($rootScope, $location, envService){
 //        $rootScope.$on('$routeChangeStart', function(event,next,current){
 //    //callback
-//             if(envService.getUserName()){
-//                $rootScope.username = envService.getUserName();
+//             if(envService.authUserName()){
+//                $rootScope.username = envService.authUserName();
 //             }
 //             else
 //             {

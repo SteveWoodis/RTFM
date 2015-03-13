@@ -1,12 +1,16 @@
 var app = angular.module('drawWorksApp');
 app.controller('loginController',function($scope, envService, $location){
-	
+	  $scope.User = {};
     $scope.logMeIn = function(){
-        var username = $scope.log_email;
-		envService.getUserName(username, $scope.log_password);
-        $scope.log_email = '';
-        $scope.log_username = '';
-        $scope.log_password = '';
+       
+        var User = $scope.User;
+        //var username = $scope.User.reg_email;
+		envService.authUserName(User).then(function(res){
+         console.log(res.data)   
+        })
+        $scope.reg_email = '';
+        $scope.reg_username = '';
+        $scope.reg_password = '';
 		
 	}
     $scope.registerMe = function(){

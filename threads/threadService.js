@@ -1,17 +1,20 @@
 var app = angular.module('drawWorksApp');
-app.factory('threadService', function(envService, $firebase){
+app.factory('threadService', function(envService, $firebaseObject){
 	var firebaseUrl = "https://drawworks.firebaseio.com";
 
 	return {
 
 			getThreads: function(){
-				return $firebase(new Firebase(firebaseUrl + '/threads'));
+				return new Firebase('https://drawworks.firebaseio.com' + '/threads');
 			},
 			getThread: function(threadId){
-				return $firebase(new Firebase(firebaseUrl + '/threads/' + threadId));
+				return $firebaseObject(new Firebase(firebaseUrl + '/threads/' + threadId));
 			},
 			getComments: function(threadId){
-				return $firebase(new Firebase(firebaseUrl + '/threads/' + threadId + '/comment'));
+				return $firebaseObject(new Firebase(firebaseUrl + '/threads/' + threadId + '/comment'));
 			}
 	}
 })
+
+
+//var ref = new Firebase("https://drawworks.firebaseio.com");
