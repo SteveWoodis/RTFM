@@ -1,8 +1,13 @@
 var app = angular.module('drawWorksApp');
-  app.controller('aboutMeCtrl',function($scope, envService){
-  var syncObject = envService.getUser();
+  app.controller('aboutMeCtrl',function($scope, $q, envService){
+      var User = {};
+      var syncObject = envService.getUser();           
     syncObject.$bindTo($scope, "userProfile").then(function(){
-        console.log($scope.userProfile);
-    });
+              User = $scope.userProfile;
+            console.log(User);
+      });
+      
+      $scope.firstname = User.reg_firstname; 
+      console.log('User ', User);;
       
 })

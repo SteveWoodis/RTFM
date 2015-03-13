@@ -8,10 +8,10 @@ app.factory('threadService', function(envService, $firebaseObject){
 				return new Firebase('https://drawworks.firebaseio.com' + '/threads');
 			},
 			getThread: function(threadId){
-				return $firebaseObject(new Firebase(firebaseUrl + '/threads/' + threadId));
+				return new Firebase(firebaseUrl + '/threads/' + threadId);
 			},
 			getComments: function(threadId){
-				return $firebaseObject(new Firebase(firebaseUrl + '/threads/' + threadId + '/comment'));
+				return new Firebase(firebaseUrl + '/threads/' + threadId + '/comment');
 			}
 	}
 })

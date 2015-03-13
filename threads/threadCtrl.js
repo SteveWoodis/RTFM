@@ -1,20 +1,28 @@
 angular.module('drawWorksApp')
-  .controller('ThreadCtrl', function ($scope, threadRef, commentsRef, envService) {
-     var username = envService.globalUserName();
-        $scope.username = username;
+  .controller('ThreadCtrl', function ($scope, threadRef, $firebaseArray, $firebaseObject, commentsRef, envService) {
+     var username;
+    var syncObject = envService.getUser();
+    syncObject.$bindTo($scope, "userProfile").then(function(){
+        username = $scope.userProfile.reg_username;
+        console.log(username);
+    }); 
 
-     var thread = threadRef.$asObject();
-    thread.$bindTo($scope, 'thread');
-    $scope.comments = commentsRef.$asArray();
-    console.log(thread);
+     //$scope.thread = $firebaseArray(threadRef);
+     //$scope.thread.$loaded().then(function (thread){
+     //});
+    
+    //thread.$bindTo($scope, "thread").then(function(){
+        
+    //});
+    $scope.comments = $firebaseArray(commentsRef);
+    //console.log(thread);
     
     $scope.createComment = function(){
        
-        console.log(username);
     	$scope.comments.$add({
     		username: username,
     		text: $scope.newCommentText
     	});
-            
+        $scope.newCommentText = '';    
     };
   });

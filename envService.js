@@ -1,6 +1,8 @@
 angular.module('drawWorksApp').service('envService', function envService($location, $timeout, $q, $firebaseObject, $http) {
    var ref = new Firebase("https://drawworks.firebaseio.com");
     var gUserName = '';
+    var uid;
+    
     this.createUser = function(UserData){
         gUserName = UserData.reg_email;
         console.log(UserData.reg_email);
@@ -20,7 +22,8 @@ angular.module('drawWorksApp').service('envService', function envService($locati
         } else {
             ref.child('user').child(usrData.uid).set(UserData);
         console.log("Successfully created user account with uid:", usrData.uid);
-            console.log('User Data from createUser' + UserData.reg_email);
+            console.log('User Data from createUser ' + UserData.reg_email);
+            uid = usrData.uid;
             $timeout(function(){
                 $location.path('/aboutMe'); 
             })
@@ -46,8 +49,9 @@ angular.module('drawWorksApp').service('envService', function envService($locati
                 deferred.resolve(userData);
      		 console.log("Authenticated successfully with payload:", authData);
                 gUserName = userData.reg_username;
+                uid = userData.uid;
                 $timeout(function(){
-                    $location.url("/threads");
+                    $location.url("/general_projects");
                 })
                 
    			}
@@ -57,10 +61,11 @@ angular.module('drawWorksApp').service('envService', function envService($locati
     }
     
     this.getUser = function(){
-        var uid = ref.getAuth() ? ref.getAuth().uid : null;
+        uid = ref.getAuth() ? ref.getAuth().uid : null;
         if(!uid) {
             return $location.path("/login");
         }
+        console.log(uid);
         return $firebaseObject(new Firebase("https://drawworks.firebaseio.com" + "/user/" + uid));
 	}
     

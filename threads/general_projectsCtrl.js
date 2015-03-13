@@ -1,18 +1,20 @@
 var app = angular.module('drawWorksApp');
-app.controller('threadsCtrl', function($scope, threadsRef, $firebaseArray, envService){
+app.controller('general_projectsCtrl', function($scope, projectsRef, $firebaseArray, envService){
     var username;
     var syncObject = envService.getUser();
     syncObject.$bindTo($scope, "userProfile").then(function(){
         username = $scope.userProfile.reg_username;
+        
     }); 
-	$scope.threads = $firebaseArray(threadsRef);
-	$scope.threads.$loaded().then(function (threads) {
+    
+	$scope.projects = $firebaseArray(projectsRef);
+	$scope.projects.$loaded().then(function (projects) {
     });
 
-	$scope.createThreads = function(){
+	$scope.createProjects = function(){
         //var username = envService.globalUserName();
-        
-		$scope.threads.$add({
+        console.log(username);
+		$scope.projects.$add({
 			username: username,
 			title: $scope.title
 		})

@@ -13,12 +13,12 @@ app.config(function($routeProvider){
         templateUrl: 'Aboutme.html',
         controller: 'aboutMeCtrl'
     })
-    .when('/threads', {
-     templateUrl: '/threads/threads.html',
-        controller: 'threadsCtrl',
+    .when('/general_projects', {
+     templateUrl: '/threads/general_projects.html',
+        controller: 'general_projectsCtrl',
         resolve: {
-            threadsRef: function (threadService) {
-            return threadService.getThreads();
+            projectsRef: function (projectService) {
+            return projectService.getProjects();
             }
         }
     })
